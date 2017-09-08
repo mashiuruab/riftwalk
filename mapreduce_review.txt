@@ -1,0 +1,26 @@
+MapReduce is a user friendly configurable model to do computation on data intensive real world tasks in a distributed environment. The users only specify function map and reduce to do the computation while all the other tasks (paraller processing, fault tolerance, scheduling, efficient network and disk usage) is managed by the framework.
+
+The abstraction designed by the authors was inspired by the map and reduce primitive present in many functional language (like Lisp). The authors have shown that, each problem can be designed in a way to map the input records to Map functions to generate intermediate key/value pairs and then apply Reduce functions to those pairs to combine derived data. The functional model with user specified Map and Reduce function facilitate the parallelization of large computation where reexecution is used as the primary mechanism for fault tolerance.
+
+Let's consider the following word count problem, here the Map functions emit each word(key) with number of occurence as count (value) and the Reduce functions combine all the unique words (keys) to get the total count of occurence in documents.
+
+map(String key, String value):
+// key: document name
+// value: document contents
+for each word w in value:
+EmitIntermediate(w, “1”);
+reduce(String key, Iterator values):
+// key: a word
+// values: a list of counts
+int result = 0;
+for each v in values:
+result += ParseInt(v);
+Emit(AsString(result));
+
+Map and Reduce function defined by users have associate types. Depending on the environment, right version need to be chosen from diffrent MapReduce implementations.
+
+At the beginning of execution cycle MapReduce library splits the input files and start Map task worker node in cluster, the map tasks store the intermediate result in memory and finally to local disk  which information is notified to the Reduce worker node through the Master node. Based on the notificaiton, the Reduce worker fetch data from remote Map workers machine. Then the reduce worker sort the intermediate keys to group the same keys together. External sort is used in case of memory shortage. Then the Reduce worker iterates over the sorted intermediate data and apply Reduce function to each key/value pair. The output of the Reduce funtion is appended to the final output file. After finishing all the map task and reduce task, the master node wakes us the user program and return back to the user code.
+
+Master node plays the role of balancing workload (Map and Reduce task) in the cluster and also do reexecution in case of in progress task machine failure (for both map  and reduce). Reexecution is needed in case of finished map task to generate the local disk intermediate result and then notified to all the Reduce worker node.
+
+

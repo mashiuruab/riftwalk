@@ -1,0 +1,15 @@
+\documentclass{article}
+\begin{document}
+\paragraph{}
+MapReduce is a user friendly configurable model to do computation on data intensive real world tasks in a distributed environment. 
+The users only specify function map and reduce to do the computation while all the other tasks (paraller processing, fault tolerance, 
+scheduling, efficient network and disk usage) is managed by the framework.
+
+\paragraph{}
+The abstraction designed by the authors was inspired by the map and reduce primitive present in many functional language (like Lisp). 
+The authors have shown that, each problem can be designed in a way to map the input records to Map functions to generate intermediate 
+key/value pairs and then apply Reduce functions to those pairs to combine derived data. The functional model with user specified Map 
+and Reduce function facilitate the parallelization of large computation where reexecution is used as the primary mechanism for fault 
+tolerance.
+
+\end{document}
