@@ -61,12 +61,15 @@ Deterministic Map and Reduce task produce same result as it would have been done
 For the nondeterministic Map and Reduce task, in case of machine failure result might not be consistent as nondeterministic task does not necessarily produce same result on each cycle. To solve this problem, Google has an ultra reliable replicated file system (it's called Colossus) to make physical disk failures irrelevant \footnote{\href{https://www.reddit.com/r/compsci/comments/1tdp9c/looking_for_clarification_on_googles_mapreduce/?st=j7dsu0tv&sh=079faa93}{Ref}}.
 
 \paragraph{}
-MapReduce master node consider the locally stored data information to optimize usage of network bandwidth. The Map and Reduce phase are divided into M and R pieces. Generally this (M + R)  value is much larger than the workers available and distributed to task (M and R task). Each worker can complete multiple  tasks based on  availability, but there should be a limit of this number (M + R). As the MapReduce master node keep O(M+R) scheduling decision and O(M*R) state in memory.
+MapReduce master node consider the locally stored data information to optimize usage of network bandwidth. The Map and Reduce phase are divided into M and R pieces. Generally this (M + R)  value is much larger than the workers available and distributed to task (M and R task). Each worker can complete multiple  tasks based on  availability, but there should be a limit of this number (M + R) as the MapReduce master node keep O(M+R) scheduling decision and O(M*R) state in memory.
 
 \paragraph{}
 Sometimes couple of machine in the cluster might take longer time w.r.t others which lengthens the total time taken for a MapReduce operation. It is called straggler. To alleviate this problem, at the end stage of MapReduce operation the master node schedules backup execution for the remaining in-progress tasks. Whichever tasks (backup or in-progress) finish first the master node marks those as complete ignoring the others. This might increase the usage of computation resources but it reduces the execution time significantly.
 
 \paragraph{}
 User specified configuration in partition functions (mapping intermediate key to R reduce workers), combiner functions (combination of same intermediate key in the same map task to reduce data transfer across network), ordering guarantees in R reduce partition, defining custom input/output type formats and debugging flexibility (run in a single machine) is also possible in MapReduce.
+
+\paragraph{}
+MapReduce library has been used broadly to different domains within Google since the first version was written. One of the significant usage so far has been the complete rewrite of production indexing system for the Google Web Search service. Though initially it ran as a sequence of eight MapReduce operations it is possible to add new phases and so was added in later part of development. The indexing system code is much simpler, smaller and easier to understand. The conceptually unrelated computations are separated from the code which make it easy to change the indexing process and has become much easier to operate now. It is also easy to improve the performance by adding extra machine to the indexing cluster.
 
 \end{document}
