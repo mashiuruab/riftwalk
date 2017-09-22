@@ -49,4 +49,4 @@ Each chunkserver use checksumming to detect corrupted chunk. Chunks broken into 
 
 During the idle period chunkservers scan and verify the contents of inactive chunks to find out any corrupted replica and adjust chunk replica ratio throughout the servers. 
 
-GFS servers generate logs sequentially, asynchronously about significant events and all RPC requests/replies. RPC logs include exact request and response sent on the wire without data. Interaction history can be reconstructed from this log by matching request response and collating RPC records on different machines.
+GFS servers generate logs sequentially, asynchronously about significant events and all RPC requests/replies. RPC logs include exact request and response sent on the wire without data. Interaction history can be reconstructed from this log by matching request response and collating RPC records on different machines. Logs can be used for load testing and performance analysis. Most recent events of log are kept in memory and used for online monitoring.
