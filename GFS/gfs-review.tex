@@ -60,4 +60,25 @@
 	
 	\paragraph{}
 	Master re-balances replicas periodically for better disk space and load balancing. Master gradually fills up a new chunkserver rather than instantly swaps it with new chunks. Re-balancing placement is like "creation". Master also decide  which existing replica to remove, better to remove from the chunkservers with bellow average free space to equalize disk space usage.
+	
+	\paragraph{}
+	GFS does not reclaim the physical storage immediately as soon as file is deleted rather it does lazily on regular cycle of garbage collection at both the file and chunks level. The execution cycle is as follows Master logs the deletion, file renamed to hidden name with deletion timestamp. Then while scanning of filesystem namespace master removes any such hidden files exist for more than 3 days. When the hidden file is removed from namespace it's in memory metadata is erased. Master does same kind of scanning on chunk namespace to identify orphan chunks and erase the metadata. In the regular heartbeat message shared by the master the chunkserver share the set of chunks it has, master replies with the identity of the chunk not present in it's metadata. Chunkserver is free to delete all those stale chunks.
+	
+	\paragraph{}
+	If a chunkserver fails and misses mutation chunk replica may become stale. To deal with this kind of situation the chunk replicas keep a version number. Whenever a chunk is granted lease, master increases the version number and inform all the replicas. Chunk version number is persisted on both the master and chunk server. After failure on a chunk server, master detects the stale replica when the chunkserver restart and reports back with it's set of replicas and version number. Master removes the stale replica on it's regular garbage collection. Master also include the version number when it replies to a client request with the chunkserver locaiton that is holding the lease. It also include the version number at the time of instructing a chunkserver to read the chunk from another server in cloning operation.
+	
+	\paragraph{}
+	As hardware failure is a norm in GFS, the system is highly available based on two simple strategy fast recovery and replication. Master and chunkservers are designed to restore their state in seconds no matter how those go down (hardware failure or killing process). GFS client and other servers experience minor hiccup on outstanding request, then reconnect to the restarted server and retry operation. Chunk replicated on multiple servers on different racks. Different parts of a file namespace can have different replication level. When a chunkserver goes offline master clone existing replicas to the other chunkservers and also detect stale replicas by doing checksum verification.
+	
+	\paragraph{}
+	Master operation log and checkpoints are replicated on multiple machine for reliability. If the master machine fails, monitoring process outside GFS starts a new master machine from replication log. Clients only use the canonical name of master machine with DNS alias which can be changed. Shadow master provides read only access to the file system even when the master is down.
+	
+	\paragraph{}
+	Each chunkserver use checksumming to detect corrupted chunk. Chunks broken into 64 KB blocks with associated 32 bits checksum. Checksums are kept in memory and stored persistently with logging. While performing  the read operation, chunkserver verifies the checksum of data blocks that overlap the range before returning any data. If a block is corrupted the chunkserver returns error to the client and also inform master about the mismatch. Then the requester read from other chunk server and the master clone chunk from another replica and instruct that chunkserver to delete its corrupted replica. Before doing the write operation the master calculate the checksum of first and last block that overlap the write range, after that it calculate and store the new checksum. Mismatch handling is same as read operation. For append operation checksum handling is optimized. No checksum verification for the last block rather incrementally update the checksum for the last partial checksum block. If a new block is created as for append operation, checksum is computed separately.
+	
+	\paragraph{}
+	During the idle period chunkservers scan and verify the contents of inactive chunks to find out any corrupted replica and adjust chunk replica ratio throughout the servers.
+	
+	\paragraph{}
+	GFS servers generate logs sequentially and asynchronously about significant events and all RPC requests/replies. RPC logs include exact request and response sent on the wire without data. Interaction history can be reconstructed from this log by matching request response and collating RPC records on different machines. Logs can be used for load testing and performance analysis. Most recent events of log are kept in memory and used for online monitoring. 
 \end{document}
