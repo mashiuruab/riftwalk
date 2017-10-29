@@ -1,0 +1,22 @@
+Question 1:
+
+1.
+cat riftwalk-sample-1.json | jq '.players[] | {teamID : .teamID, playerName : .name, championID : .championID}'
+
+2.
+cat riftwalk-sample-1.json | jq '.champion_ids'
+
+3.
+cat riftwalk-sample-100.json | jq '.region' | uniq -uc | wc -l
+
+4.
+cat riftwalk-sample-100.json | jq '.patch' | uniq -uc | wc -l
+
+5.
+cat riftwalk-sample-100.json | jq '.mmr' | uniq -uc | wc -l
+
+Question 2.
+
+1. cat riftwalk-sample-1.json | jq '.data.damageEvents' | wc -l
+
+job_1507914948537_0487
