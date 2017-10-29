@@ -1,30 +1,27 @@
-package com.uab.riftwalk.winrate;
+package com.uab.riftwalk.winrate.filter;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.uab.riftwalk.winrate.JsonMapper;
+import com.uab.riftwalk.winrate.Player;
 import org.apache.commons.lang.StringUtils;
-import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.MapWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CWRMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
+public class CommonMapper extends Mapper<LongWritable, Text, Text, MapWritable> {
     private Gson gson = new Gson();
-    Type type = new TypeToken<Map<String, Object>>(){}.getType();
 
-    public static final String WINNER_KEY = "winner";
     public static final String PARTICIPATION_KEY = "participation";
 
     @Override
     protected void map(LongWritable key, Text json, Context context)
             throws IOException, InterruptedException {
-
         JsonMapper mapperObject = getJsonMapper(json);
 
 
@@ -44,7 +41,10 @@ public class CWRMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
         for(Player player : playerList) {
             if (!characterInfoMap.containsKey(player.getChampionID())) {
                 Map<String, String> infoMap =  new HashMap<String, String>();
-                infoMap.put(WINNER_KEY, String.valueOf(Boolean.FALSE));
+                infoMap.put(JsonMapper.WINNER_KEY, String.valueOf(Boolean.FALSE));
+                infoMap.put(JsonMapper.REGION_KEY, mapperObject.getRegion());
+                infoMap.put(JsonMapper.MMR_KEY, mapperObject.getMmr());
+                infoMap.put(JsonMapper.PATCH_KEY, String.valueOf(mapperObject.getPatch()));
 
                 characterInfoMap.put(player.getChampionID(), infoMap);
             }
@@ -52,7 +52,7 @@ public class CWRMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
             Map<String,  String> infoMap =  characterInfoMap.get(player.getChampionID());
 
             if (winnerTeamId.equals(player.getTeamID())) {
-                infoMap.put(WINNER_KEY, String.valueOf(Boolean.TRUE));
+                infoMap.put(JsonMapper.WINNER_KEY, String.valueOf(Boolean.TRUE));
             }
 
             if(infoMap.containsKey(PARTICIPATION_KEY)) {
@@ -68,16 +68,21 @@ public class CWRMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
             Text characterId = new Text(entry.getKey());
             Map<String, String> entryValue = entry.getValue();
 
-            if (!Boolean.valueOf(entryValue.get(WINNER_KEY))) {
+            if (!Boolean.valueOf(entryValue.get(JsonMapper.WINNER_KEY))) {
                 continue;
             }
 
-            IntWritable participation = new IntWritable(Integer.valueOf(
-                    entryValue.get(PARTICIPATION_KEY)));
+            MapWritable outWritable = new MapWritable();
 
-            context.write(characterId, participation);
+            for(Map.Entry<String, String> outEntry : entryValue.entrySet()) {
+                Text keyWritable = new Text(outEntry.getKey());
+                Text valueWritable = new Text(outEntry.getValue());
+
+                outWritable.put(keyWritable, valueWritable);
+            }
+
+            context.write(characterId, outWritable);
         }
-
     }
 
     private JsonMapper getJsonMapper(Text json) {
@@ -91,10 +96,5 @@ public class CWRMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
         }
 
         return jsonMapper;
-    }
-
-
-    private Map<String, Object> get(Text json) {
-        return gson.fromJson(json.toString(), type);
     }
 }
