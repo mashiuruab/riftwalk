@@ -28,7 +28,7 @@ public class DEventReducer extends Reducer<Text, MapWritable, Text, Text> {
             totalTakenDamage += takenDamage.get();
         }
 
-        double heal = Math.abs(totalDoneDamage - totalTakenDamage);
+        double heal = totalDoneDamage - totalTakenDamage;
 
         Map<String, Double> outMap = new HashMap<String, Double>();
         outMap.put(DEventMapper.DONE.toString(), totalDoneDamage);
