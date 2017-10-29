@@ -19,4 +19,5 @@ Question 2.
 
 1. cat riftwalk-sample-1.json | jq '.data.damageEvents' | wc -l
 
-job_1507914948537_0487
+individual - job_1507914948537_0487
+common - job_1507914948537_0488
