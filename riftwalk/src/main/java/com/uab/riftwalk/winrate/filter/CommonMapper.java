@@ -1,7 +1,7 @@
 package com.uab.riftwalk.winrate.filter;
 
 import com.google.gson.Gson;
-import com.uab.riftwalk.winrate.JsonMapper;
+import com.uab.riftwalk.model.JsonMapper;
 import com.uab.riftwalk.winrate.Player;
 import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.io.LongWritable;

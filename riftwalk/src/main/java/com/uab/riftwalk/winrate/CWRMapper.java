@@ -2,6 +2,7 @@ package com.uab.riftwalk.winrate;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.uab.riftwalk.model.JsonMapper;
 import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;

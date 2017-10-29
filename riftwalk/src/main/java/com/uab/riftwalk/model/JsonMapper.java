@@ -1,6 +1,7 @@
-package com.uab.riftwalk.winrate;
+package com.uab.riftwalk.model;
 
 import com.google.gson.annotations.SerializedName;
+import com.uab.riftwalk.winrate.Player;
 
 import java.util.List;
 
