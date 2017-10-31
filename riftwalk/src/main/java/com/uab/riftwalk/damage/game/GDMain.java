@@ -14,7 +14,7 @@ public class GDMain {
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();
 
-        Job job = new Job(conf, "Game Wise Each Character Damage done, " +
+        Job job = new Job(conf, "Game Wise Top Character Damage done, " +
                 "received and heal Calculation");
 
         job.setJarByClass(GDMain.class);
