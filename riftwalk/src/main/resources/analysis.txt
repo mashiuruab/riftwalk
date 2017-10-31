@@ -19,5 +19,11 @@ Question 2.
 
 1. cat riftwalk-sample-1.json | jq '.data.damageEvents' | wc -l
 
-individual - job_1507914948537_0487
-common - job_1507914948537_0488
+
+
+
+2.2
+
+hadoop jar riftwalk-1.0-SNAPSHOT.jar  com.uab.riftwalk.damage.game.GDMain /user/jblkburn/riftwalk/riftwalk.jsons /user/mashiur/riftwalk/2.2
+
+Running job: job_1507914948537_0502
