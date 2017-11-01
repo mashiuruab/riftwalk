@@ -21,6 +21,25 @@ Question 2.
 
 
 
+1.1
+
+hadoop jar riftwalk-1.0-SNAPSHOT.jar  com.uab.riftwalk.winrate.CWRMain /user/jblkburn/riftwalk/riftwalk.jsons /user/mashiur/riftwalk/1.1
+
+Running job: job_1507914948537_0511
+
+1.2+
+
+hadoop jar riftwalk-1.0-SNAPSHOT.jar  com.uab.riftwalk.winrate.filter.CommonMain /user/jblkburn/riftwalk/riftwalk.jsons /user/mashiur/riftwalk/1.2+
+
+Running job: job_1507914948537_0514
+
+
+
+2.1
+
+hadoop jar riftwalk-1.0-SNAPSHOT.jar  com.uab.riftwalk.damage.DEventMain /user/jblkburn/riftwalk/riftwalk.jsons /user/mashiur/riftwalk/2.1
+
+Running job: job_1507914948537_0510
 
 2.2
 
