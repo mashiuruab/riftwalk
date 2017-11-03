@@ -2,7 +2,7 @@ package com.uab.riftwalk.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class DamageJsonMapper extends JsonMapper {
+public class DataJsonMapper extends JsonMapper {
     @SerializedName("data")
     private Data data;
 

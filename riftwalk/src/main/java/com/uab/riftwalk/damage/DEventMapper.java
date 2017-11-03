@@ -2,7 +2,7 @@ package com.uab.riftwalk.damage;
 
 import com.google.gson.Gson;
 import com.uab.riftwalk.model.DamageEvent;
-import com.uab.riftwalk.model.DamageJsonMapper;
+import com.uab.riftwalk.model.DataJsonMapper;
 import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.MapWritable;
@@ -23,7 +23,7 @@ public class DEventMapper extends Mapper<LongWritable, Text, Text, MapWritable> 
     @Override
     protected void map(LongWritable key, Text json, Context context)
             throws IOException, InterruptedException {
-        DamageJsonMapper jsonMapper = get(json);
+        DataJsonMapper jsonMapper = get(json);
 
         List<DamageEvent> damageEvents = jsonMapper.getData().getDamageEvents();
 
@@ -79,7 +79,7 @@ public class DEventMapper extends Mapper<LongWritable, Text, Text, MapWritable> 
         }
     }
 
-    private DamageJsonMapper get(Text json) {
-        return gson.fromJson(json.toString(), DamageJsonMapper.class);
+    private DataJsonMapper get(Text json) {
+        return gson.fromJson(json.toString(), DataJsonMapper.class);
     }
 }

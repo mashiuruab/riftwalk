@@ -11,6 +11,7 @@ public class JsonMapper {
     public static final String MMR_KEY = "mmr";
     public static final String PATCH_KEY = "patch";
     public static final String GAME_ID_KEY = "game_id";
+    public static final String LENGTH_KEY = "length";
 
     @SerializedName(REGION_KEY)
     private String region;
@@ -22,6 +23,8 @@ public class JsonMapper {
     private String  winner;
     @SerializedName(GAME_ID_KEY)
     private String gameId;
+    @SerializedName(LENGTH_KEY)
+    private Double length;
     @SerializedName("players")
     private List<Player> players;
 
@@ -43,6 +46,10 @@ public class JsonMapper {
 
     public String getGameId() {
         return gameId;
+    }
+
+    public Double getLength() {
+        return length;
     }
 
     public List<Player> getPlayers() {

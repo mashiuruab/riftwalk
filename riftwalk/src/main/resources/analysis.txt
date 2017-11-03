@@ -21,6 +21,15 @@ Question 2.
 
 
 
+
+Question 3 :
+3.1
+goldEarnedEvents
+
+3.2
+experienceEarnedEvents
+
+
 1.1
 
 hadoop jar riftwalk-1.0-SNAPSHOT.jar  com.uab.riftwalk.winrate.CWRMain /user/jblkburn/riftwalk/riftwalk.jsons /user/mashiur/riftwalk/1.1
