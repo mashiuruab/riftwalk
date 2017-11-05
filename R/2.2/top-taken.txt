@@ -1,0 +1,26 @@
+rm(list=ls())
+
+A  <-  read.table("/home/mashiur/projects/riftwalk/riftwalk-out/2.2-cdf-output/top-taken/part-r-00000", sep = "")
+
+df <-  data.frame(A[2])
+
+vector_a  <- as.vector(as.matrix(df))
+
+range01 <- function(x){(x-min(x))/(max(x)-min(x))}
+
+vector_a_norm  <-  range01(vector_a)
+
+mean_a <-  mean(vector_a_norm)
+sd_a  <-  sd(vector_a_norm)
+
+mean_a
+sd_a
+
+hourOfDay  <- pnorm(vector_a,mean_a,sd_a)
+
+
+cdf_a <- ecdf(hourOfDay)
+
+hourCDFcolor <- rgb(0,1,0)
+
+plot(cdf_a, col=hourCDFcolor, main=NA, xlab= "Top Damage Done Champions", ylab= "CDF")

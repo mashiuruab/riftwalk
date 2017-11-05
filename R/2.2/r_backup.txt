@@ -1,42 +1,22 @@
 rm(list=ls())
 
-user  <-  read.table("/home/mashiur/projects/reddit-clustering/reddit/R/open-analysis/User/MultiHours/raiduser2-output", sep = "")
+A  <-  read.table("/home/mashiur/projects/reddit-clustering/reddit/R/open-analysis/TP/temporalpattern-output", sep = "")
 
-tp  <-  read.table("/home/mashiur/projects/reddit-clustering/reddit/R/open-analysis/TP/temporalpattern-output", sep = "")
+df <-  data.frame(A[2])
 
-df_user <-  data.frame(user[2])
-df_tp <-  data.frame(tp[2])
+vector_a  <- as.vector(as.matrix(df))
 
-vector_user  <- as.vector(as.matrix(df_user))
+mean_a <-  mean(vector_a)
+sd_a  <-  sd(vector_a)
 
-mean_user <-  mean(vector_user)
-sd_user  <-  sd(vector_user)
+mean_a
+sd_a
 
-mean_user
-sd_user
-
-norm_user  <- pnorm(vector_user,mean_user,sd_user)
-
-vector_tp  <- as.vector(as.matrix(df_tp))
-
-mean_tp <-  mean(vector_tp)
-sd_tp  <-  sd(vector_tp)
-
-mean_tp
-sd_tp
-
-norm_tp  <- pnorm(vector_tp,mean_tp,sd_tp)
-
-# cdf_a <- ecdf(users_participated_in_suspected_hours)
+hourOfDay  <- pnorm(vector_a,mean_a,sd_a)
 
 
-userCDFcolor <- rgb(1,0,0)
+cdf_a <- ecdf(hourOfDay)
+
 hourCDFcolor <- rgb(0,1,0)
 
-cdf_user <- ecdf(norm_user)
-cdf_hour <- ecdf(norm_tp)
-
-plot(cdf_user, col=userCDFcolor, main=NA, xlab= "Raid Analysis", ylab= "CDF")
-plot(cdf_hour,  col=hourCDFcolor, add=T)
-
-legend('right', c('user', 'hourOfDay'), fill=c(userCDFcolor, hourCDFcolor), border=NA)
+plot(cdf_a, col=hourCDFcolor, main=NA, xlab= "Top Champions", ylab= "CDF")

@@ -1,7 +1,0 @@
-rm(list=ls())
-
-c_data  <-  read.table("/home/mashiur/projects/riftwalk/R/2.2/test.txt", sep = "")
-
-c_data_str <- as.character(df[1,2])
-
-csv_data <- read.csv(text=c_data[1,1]);
