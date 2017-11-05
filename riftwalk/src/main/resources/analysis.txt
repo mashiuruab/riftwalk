@@ -61,3 +61,37 @@ Running job: job_1507914948537_0502
 hadoop jar riftwalk-1.0-SNAPSHOT.jar com.uab.riftwalk.latechampion.LGMain /user/jblkburn/riftwalk/riftwalk.jsons /user/mashiur/riftwalk/2.3
 
 Running job: job_1507914948537_0528
+
+
+
+
+2.2-final
+
+
+
+
+1. hadoop jar target/riftwalk-1.0-SNAPSHOT.jar com.uab.riftwalk.damage.game.topbottom.TBMain /home/mashiur/projects/riftwalk/riftwalk-out/2.2/part-r-00000 /home/mashiur/Desktop/2.2-out-final/top-done
+
+2. hadoop jar target/riftwalk-1.0-SNAPSHOT.jar com.uab.riftwalk.damage.game.topbottom.TBMain /home/mashiur/projects/riftwalk/riftwalk-out/2.2/part-r-00000 /home/mashiur/Desktop/2.2-out-final/top-2nd-done
+
+3. hadoop jar target/riftwalk-1.0-SNAPSHOT.jar com.uab.riftwalk.damage.game.topbottom.TBMain /home/mashiur/projects/riftwalk/riftwalk-out/2.2/part-r-00000 /home/mashiur/Desktop/2.2-out-final/bottom-done
+
+4. hadoop jar target/riftwalk-1.0-SNAPSHOT.jar com.uab.riftwalk.damage.game.topbottom.TBMain /home/mashiur/projects/riftwalk/riftwalk-out/2.2/part-r-00000 /home/mashiur/Desktop/2.2-out-final/bottom-2nd-done
+
+
+1. hadoop jar target/riftwalk-1.0-SNAPSHOT.jar com.uab.riftwalk.damage.game.topbottom.TBMain /home/mashiur/projects/riftwalk/riftwalk-out/2.2/part-r-00000 /home/mashiur/Desktop/2.2-out-final/top-taken
+
+2. hadoop jar target/riftwalk-1.0-SNAPSHOT.jar com.uab.riftwalk.damage.game.topbottom.TBMain /home/mashiur/projects/riftwalk/riftwalk-out/2.2/part-r-00000 /home/mashiur/Desktop/2.2-out-final/top-2nd-taken
+
+3. hadoop jar target/riftwalk-1.0-SNAPSHOT.jar com.uab.riftwalk.damage.game.topbottom.TBMain /home/mashiur/projects/riftwalk/riftwalk-out/2.2/part-r-00000 /home/mashiur/Desktop/2.2-out-final/bottom-taken
+
+4. hadoop jar target/riftwalk-1.0-SNAPSHOT.jar com.uab.riftwalk.damage.game.topbottom.TBMain /home/mashiur/projects/riftwalk/riftwalk-out/2.2/part-r-00000 /home/mashiur/Desktop/2.2-out-final/bottom-2nd-taken
+
+
+1. hadoop jar target/riftwalk-1.0-SNAPSHOT.jar com.uab.riftwalk.damage.game.topbottom.TBMain /home/mashiur/projects/riftwalk/riftwalk-out/2.2/part-r-00000 /home/mashiur/Desktop/2.2-out-final/top-heal
+
+2. hadoop jar target/riftwalk-1.0-SNAPSHOT.jar com.uab.riftwalk.damage.game.topbottom.TBMain /home/mashiur/projects/riftwalk/riftwalk-out/2.2/part-r-00000 /home/mashiur/Desktop/2.2-out-final/top-2nd-heal
+
+3. hadoop jar target/riftwalk-1.0-SNAPSHOT.jar com.uab.riftwalk.damage.game.topbottom.TBMain /home/mashiur/projects/riftwalk/riftwalk-out/2.2/part-r-00000 /home/mashiur/Desktop/2.2-out-final/bottom-heal
+
+4. hadoop jar target/riftwalk-1.0-SNAPSHOT.jar com.uab.riftwalk.damage.game.topbottom.TBMain /home/mashiur/projects/riftwalk/riftwalk-out/2.2/part-r-00000 /home/mashiur/Desktop/2.2-out-final/bottom-2nd-heal

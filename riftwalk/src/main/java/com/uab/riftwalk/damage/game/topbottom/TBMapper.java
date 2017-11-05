@@ -12,20 +12,20 @@ import java.util.List;
 public class TBMapper extends Mapper<LongWritable, Text, Text, DoubleWritable> {
     private Gson gson = new Gson();
 
-    public Text TOP_DONE =  new Text("top-done");
-    public Text SECOND_TOP_DONE =  new Text("2nd-top-done");
-    public Text BOTTOM_DONE =  new Text("bottom-done");
-    public Text SECOND_BOTTOM_DONE =  new Text("2nd-bottom-done");
+    public static Text TOP_DONE =  new Text("top-done");
+    public static Text SECOND_TOP_DONE =  new Text("2nd-top-done");
+    public static Text BOTTOM_DONE =  new Text("bottom-done");
+    public static Text SECOND_BOTTOM_DONE =  new Text("2nd-bottom-done");
 
-    public Text TOP_TAKEN =  new Text("top-taken");
-    public Text SECOND_TOP_TAKEN =  new Text("2nd-top-taken");
-    public Text BOTTOM_TAKEN =  new Text("bottom-taken");
-    public Text SECOND_BOTTOM_TAKEN =  new Text("2nd-bottom-taken");
+    public static Text TOP_TAKEN =  new Text("top-taken");
+    public static Text SECOND_TOP_TAKEN =  new Text("2nd-top-taken");
+    public static Text BOTTOM_TAKEN =  new Text("bottom-taken");
+    public static Text SECOND_BOTTOM_TAKEN =  new Text("2nd-bottom-taken");
 
-    public Text TOP_HEAL =  new Text("top-heal");
-    public Text SECOND_TOP_HEAL =  new Text("2nd-top-heal");
-    public Text BOTTOM_HEAL =  new Text("bottom-heal");
-    public Text SECOND_BOTTOM_HEAL =  new Text("2nd-bottom-heal");
+    public static Text TOP_HEAL =  new Text("top-heal");
+    public static Text SECOND_TOP_HEAL =  new Text("2nd-top-heal");
+    public static Text BOTTOM_HEAL =  new Text("bottom-heal");
+    public static Text SECOND_BOTTOM_HEAL =  new Text("2nd-bottom-heal");
 
 
     @Override
