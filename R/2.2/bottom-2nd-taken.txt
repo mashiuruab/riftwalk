@@ -23,4 +23,4 @@ cdf_a <- ecdf(hourOfDay)
 
 hourCDFcolor <- rgb(0,1,0)
 
-plot(cdf_a, col=hourCDFcolor, main=NA, xlab= "Top Damage Done Champions", ylab= "CDF")
+plot(cdf_a, col=hourCDFcolor, main=NA, xlab= "2nd Lowest Damage Received Champions", ylab= "CDF")
