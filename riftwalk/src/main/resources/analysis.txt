@@ -55,3 +55,9 @@ Running job: job_1507914948537_0510
 hadoop jar riftwalk-1.0-SNAPSHOT.jar  com.uab.riftwalk.damage.game.GDMain /user/jblkburn/riftwalk/riftwalk.jsons /user/mashiur/riftwalk/2.2
 
 Running job: job_1507914948537_0502
+
+2.3
+
+hadoop jar riftwalk-1.0-SNAPSHOT.jar com.uab.riftwalk.latechampion.LGMain /user/jblkburn/riftwalk/riftwalk.jsons /user/mashiur/riftwalk/2.3
+
+Running job: job_1507914948537_0528
