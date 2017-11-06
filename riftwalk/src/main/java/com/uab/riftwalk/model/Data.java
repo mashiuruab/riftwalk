@@ -11,6 +11,11 @@ public class Data {
     private List<BuffEvent> buffGainedEvents;
     @SerializedName("buffLostEvents")
     private List<BuffEvent> buffLostEvents;
+    @SerializedName("goldEarnedEvents")
+    private List<EarnedEvent> goldEarnedEvents;
+    @SerializedName("experienceEarnedEvents")
+    private List<EarnedEvent> experienceEarnedEvents;
+
 
     public List<DamageEvent> getDamageEvents() {
         return damageEvents;
@@ -22,5 +27,13 @@ public class Data {
 
     public List<BuffEvent> getBuffLostEvents() {
         return buffLostEvents;
+    }
+
+    public List<EarnedEvent> getGoldEarnedEvents() {
+        return goldEarnedEvents;
+    }
+
+    public List<EarnedEvent> getExperienceEarnedEvents() {
+        return experienceEarnedEvents;
     }
 }
