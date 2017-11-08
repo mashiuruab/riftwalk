@@ -27,7 +27,8 @@ public class PRMMapper extends Mapper<LongWritable, Text, Text, Text> {
         Text characterId  = new Text(jsonInfo[0]);
         DataModelContainer container =  get(jsonInfo[1]);
 
-        Double all = container.getAll().get(0).getWinRate();
+        /*This  1 / denominator is need to done  for a error  in previous pass*/
+        Double all = 1 / container.getAll().get(0).getWinRate();
         Double regionWiseWinRate = getWinrate(container.getRegion());
         Double patchWiseWinRate = getWinrate(container.getPatch());
         Double mmrWiseWinRate = getWinrate(container.getMmr());
@@ -48,7 +49,7 @@ public class PRMMapper extends Mapper<LongWritable, Text, Text, Text> {
         Double totalBucket = 0.0;
 
         for (DataModel model : modelList) {
-            winrateSum += model.getWinRate();
+            winrateSum += 1 / model.getWinRate();
             totalBucket++;
         }
 

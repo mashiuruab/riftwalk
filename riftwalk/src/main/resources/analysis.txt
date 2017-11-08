@@ -38,11 +38,13 @@ Running job: job_1507914948537_0511
 
 1.2+
 
-hadoop jar riftwalk-1.0-SNAPSHOT.jar  com.uab.riftwalk.winrate.filter.CommonMain /user/jblkburn/riftwalk/riftwalk.jsons /user/mashiur/riftwalk/1.2+
+hadoop jar riftwalk-1.0-SNAPSHOT.jar  com.uab.riftwalk.winrate.filter.CommonMain /user/jblkburn/riftwalk/riftwalk.jsons /user/mashiur/riftwalk/1.2-intermediate
 
-Running job: job_1507914948537_0514
+Running job: job_1510007164137_0074
 
+1.2-final
 
+hadoop jar target/riftwalk-1.0-SNAPSHOT.jar  com.uab.riftwalk.winrate.prmcalculation.PRMMain /home/mashiur/projects/riftwalk/riftwalk-out/1.2/part-r-00000 /home/mashiur/hdfs/1.2-final
 
 2.1
 
@@ -105,3 +107,13 @@ total  Game = 41518
 hadoop jar riftwalk-1.0-SNAPSHOT.jar com.uab.riftwalk.probability.gold.GoldMain /user/jblkburn/riftwalk/riftwalk.jsons /user/mashiur/riftwalk/3
 
 Running job: job_1507914948537_0566
+
+
+
+positional data :
+
+1. ".data.campFrames"
+2. ".data.pingEvents"
+3. ".data.positionFrames"
+4. ".data.spellCastEvents"
+5. ".data.wardFrames"

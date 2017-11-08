@@ -35,6 +35,6 @@ public class WinParticipation {
     }
 
     public void calculateWinRate() {
-        this.winRate = this.totalParticipation / this.totalWin;
+        this.winRate = this.totalWin / this.totalParticipation;
     }
 }
