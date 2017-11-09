@@ -123,3 +123,5 @@ positional data :
 4.
 
 hadoop jar riftwalk-1.0-SNAPSHOT.jar com.uab.riftwalk.position.PFMain /user/jblkburn/riftwalk/riftwalk.jsons /user/mashiur/riftwalk/4
+
+Running job: job_1510166722528_0073
