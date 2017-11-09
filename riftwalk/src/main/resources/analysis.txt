@@ -117,3 +117,9 @@ positional data :
 3. ".data.positionFrames"
 4. ".data.spellCastEvents"
 5. ".data.wardFrames"
+
+
+
+4.
+
+hadoop jar riftwalk-1.0-SNAPSHOT.jar com.uab.riftwalk.position.PFMain /user/jblkburn/riftwalk/riftwalk.jsons /user/mashiur/riftwalk/4

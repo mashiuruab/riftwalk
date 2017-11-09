@@ -12,6 +12,7 @@ public class JsonMapper {
     public static final String PATCH_KEY = "patch";
     public static final String GAME_ID_KEY = "game_id";
     public static final String LENGTH_KEY = "length";
+    public static final String CHAMPION_IDS_KEY = "champion_ids";
 
     @SerializedName(REGION_KEY)
     private String region;
@@ -27,6 +28,8 @@ public class JsonMapper {
     private Double length;
     @SerializedName("players")
     private List<Player> players;
+    @SerializedName(CHAMPION_IDS_KEY)
+    private List<Integer> champion_ids;
 
     public String getRegion() {
         return region;
@@ -54,5 +57,9 @@ public class JsonMapper {
 
     public List<Player> getPlayers() {
         return players;
+    }
+
+    public List<Integer> getChampion_ids() {
+        return champion_ids;
     }
 }
