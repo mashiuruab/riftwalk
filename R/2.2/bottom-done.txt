@@ -21,6 +21,6 @@ hourOfDay  <- pnorm(vector_a,mean_a,sd_a)
 
 cdf_a <- ecdf(hourOfDay)
 
-hourCDFcolor <- rgb(0,1,0)
+hourCDFcolor <- rgb(1,0,0)
 
-plot(cdf_a, col=hourCDFcolor, main=NA, xlab= "Lowest Damage Done Champions", ylab= "CDF")
+plot(cdf_a, col=hourCDFcolor, main=NA, xlab= "Lowest Damage Done Champions Dist.", ylab= "CDF")
