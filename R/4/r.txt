@@ -1,0 +1,18 @@
+rm(list=ls())
+
+A_Start  <-  read.table("/home/mashiur/projects/riftwalk/riftwalk-out/4-start/part-r-00000", sep = "")
+
+A_Middle  <-  read.table("/home/mashiur/projects/riftwalk/riftwalk-out/4-middle/part-r-00000", sep = "")
+
+A_End  <-  read.table("/home/mashiur/projects/riftwalk/riftwalk-out/4-end/part-r-00000", sep = "")
+
+df <-  data.frame(A_Start[2], A_Middle[2], A_End[2])
+
+col_names <- c("Start", "Mid", "End")
+colnames(df) <- col_names
+
+rownames(df) <- A_Start[,1]
+
+A_matrix <- as.matrix(df)
+
+A_heatmap <- heatmap(A_matrix, Rowv=NA, Colv=NA, col = cm.colors(256), scale="column", margins=c(5,10))
