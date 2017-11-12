@@ -1,6 +1,6 @@
 rm(list=ls())
 
-A  <-  read.table("/home/mashiur/projects/riftwalk/riftwalk-out/2.2-cdf-output/top-done/part-r-00000", sep = "")
+A  <-  read.table("/home/mashiur/projects/riftwalk/riftwalk-result/2.2-cdf-output/top-done/part-r-00000", sep = "")
 
 df <-  data.frame(A[2])
 
@@ -22,4 +22,4 @@ cdf_a <- ecdf(topDone)
 
 tdCDFcolor <- rgb(1,0,0)
 
-plot(cdf_a, col=tdCDFcolor, main=NA, xlab= "Top Damage Done Champions Dist.", ylab= "CDF")
+plot(cdf_a, col=tdCDFcolor, main=NA, xlab= "Top Damaging Champions", ylab= "CDF")

@@ -1,6 +1,6 @@
 rm(list=ls())
 
-A  <-  read.table("/home/mashiur/projects/riftwalk/riftwalk-out/2.2-cdf-output/top-2nd-taken/part-r-00000", sep = "")
+A  <-  read.table("/home/mashiur/projects/riftwalk/riftwalk-result/2.2-cdf-output/top-2nd-taken/part-r-00000", sep = "")
 
 df <-  data.frame(A[2])
 
@@ -23,4 +23,4 @@ cdf_a <- ecdf(hourOfDay)
 
 hourCDFcolor <- rgb(0,1,0)
 
-plot(cdf_a, col=hourCDFcolor, main=NA, xlab= "Second Top Damage Received Champions Dist.", ylab= "CDF")
+plot(cdf_a, col=hourCDFcolor, main=NA, xlab= "Second Highest Receiving Champions", ylab= "CDF")
