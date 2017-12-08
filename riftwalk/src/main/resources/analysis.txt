@@ -125,3 +125,17 @@ positional data :
 hadoop jar riftwalk-1.0-SNAPSHOT.jar com.uab.riftwalk.position.PFMain /user/jblkburn/riftwalk/riftwalk.jsons /user/mashiur/riftwalk/4
 
 Running job: job_1510166722528_0073
+
+
+
+patch :
+
+hadoop jar target/riftwalk-1.0-SNAPSHOT.jar com.uab.riftwalk.helper.HPMain /home/mashiur/projects/riftwalk/riftwalk-result/1.2-final/part-r-00000 /home/mashiur/projects/riftwalk/riftwalk-result/1.2-patch
+
+region :
+
+hadoop jar target/riftwalk-1.0-SNAPSHOT.jar com.uab.riftwalk.helper.HPMain /home/mashiur/projects/riftwalk/riftwalk-result/1.2-final/part-r-00000 /home/mashiur/projects/riftwalk/riftwalk-result/1.2-region
+
+mmr :
+
+hadoop jar target/riftwalk-1.0-SNAPSHOT.jar com.uab.riftwalk.helper.HPMain /home/mashiur/projects/riftwalk/riftwalk-result/1.2-final/part-r-00000 /home/mashiur/projects/riftwalk/riftwalk-result/1.2-mmr
